@@ -1,5 +1,3 @@
-import { mjml2html } from 'mjml';
-
 export default (editor, opt = {}) => {
   let config = editor.getConfig();
   let codeViewer = editor.CodeManager.getViewer('CodeMirror').clone();
@@ -16,7 +14,7 @@ export default (editor, opt = {}) => {
 
   const getMjml = () => {
     const mjml = opt.preMjml + editor.getHtml()  + opt.postMjml;
-    return mjml2html(mjml);
+    return mjml;
   };
 
   // Set the command which could be used outside
@@ -27,7 +25,6 @@ export default (editor, opt = {}) => {
   });
 
   let mjmlCode;
-  let htmlCode;
 
   return {
 
@@ -37,7 +34,7 @@ export default (editor, opt = {}) => {
 
       let txtarea = document.createElement('textarea');
       let el = document.createElement('div');
-      el.style = 'flex:1 0 auto; padding:5px; max-width:50%; box-sizing:border-box;';
+      el.style = 'flex:1 0 auto; padding:5px; max-width:100%; box-sizing:border-box;';
 
       let codeEditor = cm.set({
         label: label,
@@ -64,11 +61,6 @@ export default (editor, opt = {}) => {
         mjmlCode = codeViewer.codeEditor;
         container.appendChild(codeViewer.el);
       }
-      if (!htmlCode) {
-        let codeViewer = this.buildEditor('HTML');
-        htmlCode = codeViewer.codeEditor;
-        container.appendChild(codeViewer.el);
-      }
 
       modal.open();
 
@@ -76,17 +68,6 @@ export default (editor, opt = {}) => {
         mjmlCode.setContent(opt.preMjml + editor.getHtml()  + opt.postMjml);
         //mjmlCode.editor.setOption('lineWrapping', 1);
         mjmlCode.editor.refresh();
-      }
-      if (htmlCode) {
-        let mjml = getMjml();
-        if(mjml.errors.length) {
-          mjml.errors.forEach((err) => {
-            console.warn(err.formattedMessage);
-          });
-        }
-        htmlCode.setContent(mjml.html);
-        //htmlCode.editor.setOption('lineWrapping', 1);
-        htmlCode.editor.refresh();
       }
 
       sender.set && sender.set('active', 0);
