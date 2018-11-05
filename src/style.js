@@ -30,39 +30,59 @@ export default (editor, opt = {}) => {
         },{
           name: 'Typography',
           open: false,
-          buildProps: ['font-family', 'font-size', 'font-weight', 'letter-spacing', 'color', 'line-height', 'text-align', 'align', 'text-decoration'],
+          buildProps: ['font-family', 'font-size', 'font-weight', 'letter-spacing', 'line-height', 'color', 'text-align', 'align', 'vertical-align', 'text-decoration', 'text-transform'],
           properties:[
             { name: 'Font', property: 'font-family'},
             { name: 'Weight', property: 'font-weight'},
             { name:  'Font color', property: 'color'},
+            { name:  'Line height', property: 'line-height'},
             {
               property: 'text-align',
               type: 'radio',
               defaults: 'left',
               list: [
-                { value : 'left',  name : 'Left',    className: 'fa fa-align-left'},
-                { value : 'center',  name : 'Center',  className: 'fa fa-align-center' },
-                { value : 'right',   name : 'Right',   className: 'fa fa-align-right'},
-                { value : 'justify', name : 'Justify',   className: 'fa fa-align-justify'}
+                { value : 'left',  name : 'Left', title: 'Left', className: 'fa fa-align-left'},
+                { value : 'center',  name : 'Center', title: 'Center', className: 'fa fa-align-center' },
+                { value : 'right',   name : 'Right', title: 'Right', className: 'fa fa-align-right'},
+                { value : 'justify', name : 'Justify', title: 'Justify', className: 'fa fa-align-justify'}
               ],
             },{
               property: 'align',
               type: 'radio',
               defaults: 'left',
               list: [
-                { value : 'left',  name : 'Left',    className: 'fa fa-align-left'},
-                { value : 'center',  name : 'Center',  className: 'fa fa-align-center' },
-                { value : 'right',   name : 'Right',   className: 'fa fa-align-right'},
-                { value : 'justify', name : 'Justify',   className: 'fa fa-align-justify'}
+                { value : 'left',  name : 'Left', title: 'Left', className: 'fa fa-align-left'},
+                { value : 'center',  name : 'Center', title: 'Center',className: 'fa fa-align-center' },
+                { value : 'right',   name : 'Right', title: 'Right', className: 'fa fa-align-right'},
+                { value : 'justify', name : 'Justify', title: 'Justify', className: 'fa fa-align-justify'}
+              ],
+            },{
+              property: 'vertical-align',
+              type: 'radio',
+              defaults: 'middle',
+              list: [
+                { value : 'top',  name : 'Top', title: 'Top' },
+                { value : 'middle',  name : 'Middle', title: 'Middle' },
+                { value : 'bottom',   name : 'Bottom', title: 'Bottom' },
               ],
             },{
               property: 'text-decoration',
               type: 'radio',
               defaults: 'none',
               list: [
-                { value: 'none', name: 'None', className: 'fa fa-times'},
-                { value: 'underline', name: 'underline', className: 'fa fa-underline' },
-                { value: 'line-through', name: 'Line-through', className: 'fa fa-strikethrough'}
+                { value: 'none', name: 'None', title: 'None', className: 'fa fa-times'},
+                { value: 'underline', name: 'underline', title: 'Underline', className: 'fa fa-underline' },
+                { value: 'line-through', name: 'Line-through', title: 'Line Through', className: 'fa fa-strikethrough'}
+              ],
+            },{
+              property: 'text-transform',
+              type: 'radio',
+              defaults: 'none',
+              list: [
+                { value: 'none', name: 'None', title: 'None', className: 'fa fa-times'},
+                { value: 'capitalize', name: 'Cap', title: 'Capitalize' },
+                { value: 'uppercase', name: 'Upper', title: 'Uppercase' },
+                { value: 'lowercase', name: 'Lower', title: 'Lowercase' },
               ],
             }],
         },{
@@ -71,7 +91,7 @@ export default (editor, opt = {}) => {
           buildProps: [ 'background-color', 'container-background-color', 'background-url', 'background-repeat',
             'background-size', 'border-radius', 'border'],
           properties: [{
-            name: 'Background color',
+            name: 'Container Background color',
             property: 'container-background-color',
             type: 'color',
           },{
@@ -80,14 +100,14 @@ export default (editor, opt = {}) => {
           },{
             property: 'border-radius',
             properties  : [
-              { name: 'Top', property: 'border-top-left-radius'},
-              { name: 'Right', property: 'border-top-right-radius'},
-              { name: 'Bottom', property: 'border-bottom-left-radius'},
-              { name: 'Left', property: 'border-bottom-right-radius'}
+              { name: 'Top Left', property: 'border-top-left-radius'},
+              { name: 'Top Right', property: 'border-top-right-radius'},
+              { name: 'Bottom Left', property: 'border-bottom-left-radius'},
+              { name: 'Bottom Right', property: 'border-bottom-right-radius'}
             ],
           },{
             property: 'border-detached',
-            name: 'Border detached',
+            name: 'Border',
             type: 'composite',
             properties: ['border-width'],
             detached: true,
