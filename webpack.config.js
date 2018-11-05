@@ -1,14 +1,16 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const pkg = require('./package.json');
 const webpack = require('webpack');
+const path = require('path');
 const fs = require('fs');
 const name = pkg.name;
 let plugins = [];
 
 module.exports = (env = {}) => {
-  if (env.production) {
+  const isProd = !!env.production;
+  if (isProd) {
     plugins = [
-      new webpack.optimize.UglifyJsPlugin({ minimize: true, compressor: { warnings: false }}),
+      new webpack.optimize.ModuleConcatenationPlugin(),
       new webpack.BannerPlugin(`${name} - ${pkg.version}`),
     ]
   } else {
@@ -22,12 +24,15 @@ module.exports = (env = {}) => {
   return {
     entry: './src',
     output: {
+        path: path.join(__dirname),
         filename: `./dist/${name}.min.js`,
         library: name,
         libraryTarget: 'umd',
     },
+    mode: isProd ? 'production' : 'development',
+    devtool: isProd ? 'source-map' : false,
     module: {
-      loaders: [{
+      rules: [{
           test: /\.js$/,
           loader: 'babel-loader',
           include: /src/,

@@ -1,12 +1,12 @@
 {
   "name": "grapesjs-mjml",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "MJML Componenets integration in GrapesJS",
   "main": "dist/grapesjs-mjml.min.js",
   "scripts": {
     "lint": "eslint src",
     "v:patch": "npm version --no-git-tag-version patch",
-    "build": "npm run v:patch && webpack --env.production",
+    "build": "webpack --env.production",
     "start": "webpack-dev-server --open --progress --colors"
   },
   "repository": {
@@ -36,14 +36,15 @@
     "mjml": "^3.3.5"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "eslint": "^4.1.1",
-    "html-webpack-plugin": "^2.30.1",
-    "node-sass": "^4.7.1",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.4"
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^4.19.1",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.9.1",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.4"
   }
 }
