@@ -4,6 +4,7 @@ import loadHead from './Head';
 import loadBody from './Body';
 import loadContainer from './Container';
 import loadSection from './Section';
+import loadWrapper from './Wrapper';
 import loadColumn from './Column';
 import loadText from './Text';
 import loadButton from './Button';
@@ -276,4 +277,5 @@ export default (editor, opt = {}) => {
   loadDivider(editor, compOpts);
   loadSpacer(editor, compOpts);
   loadLocation(editor, compOpts);
+  loadWrapper(editor, compOpts);
 }

@@ -1,9 +1,9 @@
-// Specs: https://mjml.io/documentation/#mjml-section
+// Specs: https://mjml.io/documentation/#mjml-wrapper
 
 export default (editor, {
   dc, defaultModel, defaultView, coreMjmlModel, coreMjmlView
 }) => {
-  const type = 'mj-section';
+  const type = 'mj-wrapper';
 
   dc.addType(type, {
 
@@ -12,9 +12,9 @@ export default (editor, {
 
       defaults: {
         ...defaultModel.prototype.defaults,
-        'custom-name': 'Section',
-        draggable: '[data-type=mj-container], [data-type=mj-wrapper]',
-        droppable: '[data-type=mj-column]',
+        'custom-name': 'Wrapper',
+        draggable: '[data-type=mj-container]',
+        droppable: '[data-type=mj-section]',
         'style-default': {
           'padding-top': '10px',
           'padding-bottom': '10px',
@@ -45,7 +45,7 @@ export default (editor, {
 
       attributes: {
         style: 'pointer-events: all;',
-        'data-type': 'mj-section',
+        'data-type': 'mj-wrapper',
       },
 
       getChildrenSelector() {

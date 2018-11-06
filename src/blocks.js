@@ -87,4 +87,13 @@ export default (editor, opt = {}) => {
     attributes: { class: 'fa fa-map' },
     ...allBlocks,
   });
+
+  /**
+  bm.add('mj-wrapper', {
+    label: 'Wrapper',
+    content: `<mj-wrapper></mj-wrapper>`,
+    attributes: { class: 'gjs-fonts gjs-f-b1' },
+    ...allBlocks,
+  });
+  */
 }
