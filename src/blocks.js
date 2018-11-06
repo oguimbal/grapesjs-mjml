@@ -80,4 +80,11 @@ export default (editor, opt = {}) => {
     attributes: { class: 'fa fa-arrows-v' },
     ...allBlocks,
   });
+
+  bm.add('mj-location', {
+    label: 'Location',
+    content: '<mj-location/>',
+    attributes: { class: 'fa fa-map' },
+    ...allBlocks,
+  });
 }

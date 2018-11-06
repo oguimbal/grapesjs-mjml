@@ -7,6 +7,7 @@ import loadSection from './Section';
 import loadColumn from './Column';
 import loadText from './Text';
 import loadButton from './Button';
+import loadLocation from './Location';
 import loadImage from './Image';
 import loadSocial from './Social';
 import loadDivider from './Divider';
@@ -274,4 +275,5 @@ export default (editor, opt = {}) => {
   loadSocial(editor, compOpts);
   loadDivider(editor, compOpts);
   loadSpacer(editor, compOpts);
+  loadLocation(editor, compOpts);
 }
