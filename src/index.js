@@ -21,6 +21,15 @@ export default grapesjs.plugins.add('gjs-mjml', (editor, opts = {}) => {
     // Description for the import modal
     modalLabelImport: '',
 
+    // Title for the edit modal
+    modalTitleEdit: 'Edit MJML',
+
+    // Test for the edit button
+    modalBtnEdit: 'Save',
+
+    // Description for the edit modal
+    modalLabelEdit: '',
+
     // Title for the export modal
     modalTitleExport: 'Export MJML',
 
