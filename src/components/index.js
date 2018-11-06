@@ -35,7 +35,6 @@ export default (editor, opt = {}) => {
 
 
 
-
   // MJML Core model
   let coreMjmlModel = {
     init() {
@@ -51,6 +50,54 @@ export default (editor, opt = {}) => {
       this.set('attributes', attrs);
       this.set('style', attrs);
       this.listenTo(this, 'change:style', this.handleStyleChange);
+
+      const { em } = this;
+      const model = this;
+      const ppfx = (em && em.getConfig('stylePrefix')) || '';
+
+      var tb = [];
+      if (model.collection) {
+        tb.push({
+          attributes: { class: 'fa fa-arrow-up' },
+          command: 'select-parent',
+          tooltip: 'Select Parent'
+        });
+      }
+      if (model.get('draggable')) {
+        tb.push({
+          attributes: {
+            class: `fa fa-arrows ${ppfx}no-touch-actions`,
+            draggable: true
+          },
+          command: 'tlb-move',
+          tooltip: 'Move'
+        });
+      }
+      if (model.get('copyable')) {
+        tb.push({
+          attributes: { class: 'fa fa-clone' },
+          command: 'tlb-clone',
+          tooltip: 'Clone'
+        });
+      }
+      tb.push({
+        attributes: { class: 'fa fa-code' },
+        command: 'mjml-set-condition',
+        tooltip: 'Set Conditional Code'
+      });
+      tb.push({
+        attributes: { class: 'fa fa-code' },
+        command: 'mjml-set-loop',
+        tooltip: 'Set Looping Code'
+      });
+      if (model.get('removable')) {
+        tb.push({
+          attributes: { class: 'fa fa-trash-o' },
+          command: 'tlb-delete',
+          tooltip: 'Delete'
+        });
+      }
+      model.set('toolbar', tb);
     },
 
 
