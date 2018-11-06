@@ -96,4 +96,11 @@ export default (editor, opt = {}) => {
     ...allBlocks,
   });
   */
+
+  bm.add('mj-raw', {
+    label: 'Raw',
+    content: '<mj-raw>Insert html here</mj-raw>',
+    attributes: { class: 'fa fa-code' },
+    ...allBlocks,
+  });
 }

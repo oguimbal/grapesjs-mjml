@@ -7,6 +7,7 @@ import loadSection from './Section';
 import loadWrapper from './Wrapper';
 import loadColumn from './Column';
 import loadText from './Text';
+import loadRaw from './Raw';
 import loadButton from './Button';
 import loadLocation from './Location';
 import loadImage from './Image';
@@ -278,4 +279,5 @@ export default (editor, opt = {}) => {
   loadSpacer(editor, compOpts);
   loadLocation(editor, compOpts);
   loadWrapper(editor, compOpts);
+  loadRaw(editor, compOpts);
 }
