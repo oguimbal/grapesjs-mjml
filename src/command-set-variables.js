@@ -28,7 +28,7 @@ export default (editor, opt = {}) => {
 
   // Init code viewer
   codeViewer.set({
-    codeName: 'javascript',
+    codeName: 'application/json',
     theme: opt.codeViewerTheme,
     readOnly: 0
   });

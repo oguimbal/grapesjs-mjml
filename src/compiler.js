@@ -3,7 +3,7 @@ const parser = new DOMParser();
 function evalInContext(js, context = {}) {
   try {
     return eval(`
-        var $Data = JSON.parse('${JSON.stringify(context)}');
+        var $Data = JSON.parse('${JSON.stringify(context).replace(/'/g, "\\'")}');
         function lt(a, b) {
           return a < b;
         }
