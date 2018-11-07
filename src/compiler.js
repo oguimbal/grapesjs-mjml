@@ -2,32 +2,34 @@ const parser = new DOMParser();
 
 function evalInContext(js, context = {}) {
   try {
-    return eval(`
-        var $Data = JSON.parse('${JSON.stringify(context).replace(/'/g, "\\'")}');
-        function lt(a, b) {
-          return a < b;
-        }
-        function lte(a, b) {
-          return a <= b;
-        }
-        function gt(a, b) {
-          return a > b;
-        }
-        function gte(a, b) {
-          return a >= b;
-        }
-        function and() {
-          return Array.prototype.slice.call(arguments).reduce(function(prev, item) {
-            return prev && item;
-          }, true);
-        }
-        function or() {
-          return Array.prototype.slice.call(arguments).reduce(function(prev, item) {
-            return prev || item;
-          }, false);
-        }
-        ;${js}
-    `);
+    return function() {
+        return eval(`
+            var $Data = this;
+            function lt(a, b) {
+              return a < b;
+            }
+            function lte(a, b) {
+              return a <= b;
+            }
+            function gt(a, b) {
+              return a > b;
+            }
+            function gte(a, b) {
+              return a >= b;
+            }
+            function and() {
+              return Array.prototype.slice.call(arguments).reduce(function(prev, item) {
+                return prev && item;
+              }, true);
+            }
+            function or() {
+              return Array.prototype.slice.call(arguments).reduce(function(prev, item) {
+                return prev || item;
+              }, false);
+            }
+            ;${js}
+        `);
+      }.call(context);
   }
   catch(e) {
     console.error(e);
@@ -38,7 +40,7 @@ function evalInContext(js, context = {}) {
 function renderNode(node, context) {
   const attrs = [];
   for(let attrName of node.getAttributeNames()) {
-    const attrValue = node.getAttribute(attrName);
+    const attrValue = evalText(node.getAttribute(attrName), context);
     attrs.push(`${attrName}="${attrValue}"`);
   }
   const children = [];
@@ -59,13 +61,17 @@ function renderNode(node, context) {
   return lines.join('\n');
 }
 
+function evalText(text = '', context = {}) {
+  return text.replace(/\{!([^}]*)\}/gm, (match, group) => String(evalInContext(group, context)));
+}
+
 function toCode(node, context) {
   if(!node) {
     return [];
   }
 
   if(node.nodeType === 3) {
-    return [(node.nodeValue || '').replace(/\{!([^}]*)\}/gm, (match, group) => String(evalInContext(group, context)))];
+    return [evalText(node.nodeValue, context)];
   }
 
   if(node.hasAttribute('data-if')) {
