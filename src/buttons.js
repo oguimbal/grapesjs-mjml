@@ -30,11 +30,13 @@ export default (editor, opt = {}) => {
     attributes: { title: 'Set Variables' }
   });
 
-  pnm.addButton('options', {
-    id: 'mjml-save',
-    className: 'fa fa-save',
-    command: 'mjml-save',
-    attributes: { title: 'Save' }
-  });
+  if(!opt.readOnly) {
+    pnm.addButton('options', {
+      id: 'mjml-save',
+      className: 'fa fa-save',
+      command: 'mjml-save',
+      attributes: { title: 'Save' }
+    });
+  }
 
 }

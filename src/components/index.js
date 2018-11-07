@@ -63,7 +63,7 @@ export default (editor, opt = {}) => {
           tooltip: 'Select Parent'
         });
       }
-      if (model.get('draggable')) {
+      if (model.get('draggable') && !opt.readOnly) {
         tb.push({
           attributes: {
             class: `fa fa-arrows ${ppfx}no-touch-actions`,
@@ -73,7 +73,7 @@ export default (editor, opt = {}) => {
           tooltip: 'Move'
         });
       }
-      if (model.get('copyable')) {
+      if (model.get('copyable') && !opt.readOnly) {
         tb.push({
           attributes: { class: 'fa fa-clone' },
           command: 'tlb-clone',
@@ -90,7 +90,7 @@ export default (editor, opt = {}) => {
         command: 'mjml-set-loop',
         tooltip: 'Set Looping Code'
       });
-      if (model.get('removable')) {
+      if (model.get('removable') && !opt.readOnly) {
         tb.push({
           attributes: { class: 'fa fa-trash-o' },
           command: 'tlb-delete',

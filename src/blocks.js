@@ -5,6 +5,10 @@ export default (editor, opt = {}) => {
     bm.getAll().reset();
   }
 
+  if(opt.readOnly) {
+    return;
+  }
+
   const allBlocks = {
     category: opt.categoryLabel,
   }

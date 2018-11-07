@@ -39,7 +39,7 @@ export default (editor, opt = {}) => {
   codeViewer.set({
     codeName: 'javascript',
     theme: opt.codeViewerTheme,
-    readOnly: 0
+    readOnly: opt.readOnly
   });
 
   return {
@@ -49,13 +49,15 @@ export default (editor, opt = {}) => {
       let modal = editor.Modal;
       let modalContent = modal.getContentEl();
       let viewer = codeViewer.editor;
-      modal.setTitle('Edit Looping Code');
+      modal.setTitle(opt.readOnly ? 'View Looping Code' : 'Edit Looping Code');
 
       // Init code viewer if not yet instantiated
       if (!viewer) {
         let txtarea = document.createElement('textarea');
         container.appendChild(txtarea);
-        container.appendChild(btnImp);
+        if(!opt.readOnly) {
+          container.appendChild(btnImp);
+        }
         codeViewer.init(txtarea);
         viewer = codeViewer.editor;
       }

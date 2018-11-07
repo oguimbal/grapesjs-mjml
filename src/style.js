@@ -5,6 +5,9 @@ export default (editor, opt = {}) => {
 
     editor.on('load', () => {
       sectors.reset();
+      if(opt.readOnly) {
+        return;
+      }
       sectors.add([{
           name: 'Dimension',
           open: false,

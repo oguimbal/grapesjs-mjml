@@ -22,7 +22,7 @@ export default (editor, opt = {}) => {
   codeViewer.set({
     codeName: 'htmlmixed',
     theme: opt.codeViewerTheme,
-    readOnly: 0
+    readOnly: opt.readOnly,
   });
 
   return {
@@ -31,7 +31,7 @@ export default (editor, opt = {}) => {
       let modal = editor.Modal;
       let modalContent = modal.getContentEl();
       let viewer = codeViewer.editor;
-      modal.setTitle(opt.modalTitleEdit);
+      modal.setTitle(opt.readOnly ? 'View MJML' : 'Edit MJML');
 
       // Init code viewer if not yet instantiated
       if (!viewer) {
@@ -44,7 +44,9 @@ export default (editor, opt = {}) => {
           container.appendChild(labelEl);
         }
         container.appendChild(txtarea);
-        container.appendChild(btnImp);
+        if(!opt.readOnly) {
+          container.appendChild(btnImp);
+        }
         codeViewer.init(txtarea);
         viewer = codeViewer.editor;
       }

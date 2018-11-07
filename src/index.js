@@ -87,6 +87,12 @@ export default grapesjs.plugins.add('gjs-mjml', (editor, opts = {}) => {
   // Extend Style Manager
   require('./style').default(editor, opt);
 
+  // Extend Traits Manager
+  require('./trait').default(editor, opt);
+
+  // Extend Layer Manager
+  require('./layer').default(editor, opt);
+
   // Update devices
   if (opt.resetDevices) {
     const dm = editor.DeviceManager;
