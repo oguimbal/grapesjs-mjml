@@ -27,4 +27,10 @@ export default (editor, opt = {}) => {
     command: 'mjml-set-variables',
   });
 
+  pnm.addButton('options', {
+    id: 'mjml-save',
+    className: 'fa fa-save',
+    command: 'mjml-save',
+  });
+
 }

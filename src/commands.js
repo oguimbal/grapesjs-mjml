@@ -8,6 +8,7 @@ export default (editor, opt = {}) => {
   let setConditionCommand = require('./command-set-condition');
   let setLoopCommand = require('./command-set-loop');
   let setVariablesCommand = require('./command-set-variables');
+  let saveCommand = require('./command-save');
 
   cmd.add('mjml-import', importCommand.default(editor, opt));
   cmd.add(exportName, exportCommand.default(editor, opt));
@@ -16,4 +17,5 @@ export default (editor, opt = {}) => {
   cmd.add('mjml-set-condition', setConditionCommand.default(editor, opt));
   cmd.add('mjml-set-loop', setLoopCommand.default(editor, opt));
   cmd.add('mjml-set-variables', setVariablesCommand.default(editor, opt));
+  cmd.add('mjml-save', saveCommand.default(editor, opt));
 }
