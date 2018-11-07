@@ -6,10 +6,12 @@ export default (editor, opt = {}) => {
   let editCommand = require('./command-edit-mjml');
   let previewCommand = require('./command-preview');
   let setConditionCommand = require('./command-set-condition');
+  let setLoopCommand = require('./command-set-loop');
 
   cmd.add('mjml-import', importCommand.default(editor, opt));
   cmd.add(exportName, exportCommand.default(editor, opt));
   cmd.add('mjml-edit', editCommand.default(editor, opt));
   cmd.add('mjml-preview', previewCommand.default(editor, opt));
   cmd.add('mjml-set-condition', setConditionCommand.default(editor, opt));
+  cmd.add('mjml-set-loop', setLoopCommand.default(editor, opt));
 }
