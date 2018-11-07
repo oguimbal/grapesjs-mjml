@@ -3,6 +3,19 @@ export default (editor, opt = {}) => {
   let config = editor.getConfig();
   let pfx = config.stylePrefix || '';
 
+  let changed = false;
+
+  editor.on('change:changesCount', (editorModel, changes) => {
+    changed = !!changes;
+  });
+  window.addEventListener("beforeunload", e => {
+    if(changed) {
+      const msg = "You have unsaved changes. Are you sure you want to leave?";
+      e.returnValue = msg;
+      return msg;
+    }
+  });
+
   return {
 
     run(editor, sender = {}) {
@@ -29,6 +42,7 @@ export default (editor, opt = {}) => {
         modal.setContent('');
         modal.setContent(container);
         modal.open();
+        changed = false;
       }
 
       function onError(error) {
