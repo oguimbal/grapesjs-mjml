@@ -13,24 +13,28 @@ export default (editor, opt = {}) => {
     id: 'mjml-edit',
     className: 'fa fa-code',
     command: 'mjml-edit',
+    attributes: { title: 'Edit MJML' }
   });
 
   pnm.addButton('options', {
     id: 'mjml-preview',
     className: 'fa fa-eye',
     command: 'mjml-preview',
+    attributes: { title: 'Preview' }
   });
 
   pnm.addButton('options', {
     id: 'mjml-variables',
     className: 'fa fa-list',
     command: 'mjml-set-variables',
+    attributes: { title: 'Set Variables' }
   });
 
   pnm.addButton('options', {
     id: 'mjml-save',
     className: 'fa fa-save',
     command: 'mjml-save',
+    attributes: { title: 'Save' }
   });
 
 }
