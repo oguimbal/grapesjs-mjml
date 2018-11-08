@@ -5,7 +5,6 @@ export default (editor, {
 }) => {
   const type = 'mj-raw';
 
-  let $el = null;
   let config = editor.getConfig();
   let codeViewer = editor.CodeManager.getViewer('CodeMirror').clone();
   let btnImp = document.createElement('button');
@@ -17,7 +16,7 @@ export default (editor, {
   btnImp.style.float = 'right';
   btnImp.onclick = () => {
     let code = codeViewer.editor.getValue();
-    $el && $el.html(code);
+    editor.getSelected().set('content', code);
     editor.Modal.close();
   };
   codeViewer.set({
@@ -41,13 +40,17 @@ export default (editor, {
       toHTML() {
         let tagName = this.get('tagName');
 
-        return `<${tagName}>${this.view.$el.html()}</${tagName}>`;
+        return `<${tagName}>${this.get('content')}</${tagName}>`;
       },
     },{
 
       isComponent(el) {
         if (el.tagName == type.toUpperCase()) {
-          return { type };
+          return {
+            type,
+            content: el.innerHTML,
+            components: [],
+          };
         }
       },
     }),
@@ -72,10 +75,13 @@ export default (editor, {
         };
       },
 
+      getTemplateFromEl(sandboxEl) {
+        return sandboxEl.querySelector('div > table > tbody').innerHTML;
+      },
+
       enableEditing(e) {
         let modal = editor.Modal;
-        $el = this.$el;
-        let modalContent = $el.html();
+        let modalContent = this.model.get('content');
         let viewer = codeViewer.editor;
         modal.setTitle('Edit Raw HTML');
 
