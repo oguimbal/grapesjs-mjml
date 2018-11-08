@@ -43,21 +43,26 @@ function renderNode(node, context) {
     const attrValue = evalText(node.getAttribute(attrName), context);
     attrs.push(`${attrName}="${attrValue}"`);
   }
-  const children = [];
-  for(let child of node.childNodes) {
-    const childCodes = toCode(child, context);
-    if(childCodes) {
-      childCodes.forEach(childCode => {
-        children.push(childCode);
-      });
-    }
-  }
   const tagName = node.tagName;
   const lines = [
     `<${tagName} ${attrs.join(' ')}>`,
-    children.join('\n'),
-    `</${tagName}>`,
   ];
+  if(tagName === 'mj-text' || tagName === 'mj-raw' || tagName === 'mj-button') {
+    lines.push(evalText(node.textContent, context));
+  }
+  else {
+    const children = [];
+    for(let child of node.childNodes) {
+      const childCodes = toCode(child, context);
+      if(childCodes) {
+        childCodes.forEach(childCode => {
+          children.push(childCode);
+        });
+      }
+    }
+    lines.push(children.join('\n'));
+  }
+  lines.push(`</${tagName}>`);
   return lines.join('\n');
 }
 
@@ -66,12 +71,8 @@ function evalText(text = '', context = {}) {
 }
 
 function toCode(node, context) {
-  if(!node) {
+  if(!node || node.nodeType !== 1) {
     return [];
-  }
-
-  if(node.nodeType === 3) {
-    return [evalText(node.nodeValue, context)];
   }
 
   if(node.hasAttribute('data-if')) {
@@ -82,26 +83,26 @@ function toCode(node, context) {
     }
   }
 
-    const result = [];
-    if(node.hasAttribute('data-repeat')) {
-        const repeatCode = node.getAttribute('data-repeat');
-        let [ varName, iterations ] = repeatCode.split(' in ');
-        if(!varName || !iterations) {
-            throw new Error('Invalid looping code for ' + repeatCode);
-        }
-        varName = varName.trim();
-        iterations = iterations.trim();
-        const list = evalInContext(iterations, context) || [];
-        for(let item of list) {
-            const newContext = Object.assign({}, context, { [varName]: item });
-            result.push(renderNode(node, newContext));
-        }
-    }
-    else {
-        [node].forEach(node => {
-            result.push(renderNode(node, context));
-        });
-    }
+  const result = [];
+  if(node.hasAttribute('data-repeat')) {
+      const repeatCode = node.getAttribute('data-repeat');
+      let [ varName, iterations ] = repeatCode.split(' in ');
+      if(!varName || !iterations) {
+          throw new Error('Invalid looping code for ' + repeatCode);
+      }
+      varName = varName.trim();
+      iterations = iterations.trim();
+      const list = evalInContext(iterations, context) || [];
+      for(let item of list) {
+          const newContext = Object.assign({}, context, { [varName]: item });
+          result.push(renderNode(node, newContext));
+      }
+  }
+  else {
+      [node].forEach(node => {
+          result.push(renderNode(node, context));
+      });
+  }
 
   return result;
 }

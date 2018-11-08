@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint src",
     "v:patch": "npm version --no-git-tag-version patch",
-    "build": "webpack --env.production",
+    "build-prod": "webpack --env.production",
+    "build": "webpack --env.development",
     "start": "webpack-dev-server --open --progress --colors"
   },
   "repository": {
