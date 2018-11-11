@@ -28,6 +28,7 @@ export default (editor, {
           'width',
           'background-color'
         ],
+        traits: ['data-title', 'data-preview'],
       },
     },{
       isComponent(el) {
