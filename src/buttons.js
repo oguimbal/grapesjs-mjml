@@ -30,6 +30,13 @@ export default (editor, opt = {}) => {
     attributes: { title: 'Set Variables' }
   });
 
+  pnm.addButton('options', {
+    id: 'mjml-user-context',
+    className: 'fa fa-list',
+    command: 'mjml-set-user-context',
+    attributes: { title: 'Set User Context' }
+  });
+
   if(!opt.readOnly) {
     pnm.addButton('options', {
       id: 'mjml-save',

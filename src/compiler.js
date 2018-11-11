@@ -107,11 +107,22 @@ function toCode(node, context) {
   return result;
 }
 
-export default (code = '', context = {}) => {
+const mergeContext = (context, userContext) => {
+  const newContext = {};
+  userContext && userContext.forEach(item => {
+    newContext[item.name] = item.value;
+  });
+
+  return Object.assign({}, context, { '$User': newContext });
+};
+
+export default (code = '', context = {}, userContext = {}) => {
   if(!code) {
       return code;
   }
 
+  const allContext = mergeContext(context, userContext);
+
   const doc = parser.parseFromString(code,"text/xml");
-  return toCode(doc.children[0], context)[0];
+  return toCode(doc.children[0], allContext)[0];
 }

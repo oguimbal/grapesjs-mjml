@@ -6,7 +6,7 @@ export default (editor, opt = {}) => {
   var compiled = false;
 
   var compileCode = code => {
-      return compile(code, opt.context);
+      return compile(code, opt.context, opt.userContext);
   };
 
   return {
