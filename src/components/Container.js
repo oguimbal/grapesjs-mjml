@@ -7,6 +7,7 @@ export default (editor, {
   const droppable = [
     'mj-section',
     'mj-wrapper',
+    'mj-hero',
   ].map(tag => `[data-type=${tag}]`).join(', ');
 
   dc.addType(type, {

@@ -12,7 +12,7 @@ export default (editor, {
 
       defaults: { ...linkModel.prototype.defaults,
         'custom-name': 'Location',
-        draggable: '[data-type=mj-column]',
+        draggable: '[data-type=mj-column], [data-type=mj-hero-content]',
         highlightable: false,
         stylable: ['color', 'font-family', 'font-size', 'font-weight',
             'padding', 'padding-top', 'padding-bottom', 'padding-left', 'padding-right'

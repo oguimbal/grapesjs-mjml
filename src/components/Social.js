@@ -12,7 +12,7 @@ export default (editor, {
 
       defaults: { ...defaultModel.prototype.defaults,
         'custom-name': 'Social',
-        draggable: '[data-type=mj-column]',
+        draggable: '[data-type=mj-column], [data-type=mj-hero-content]',
         droppable: false,
         stylable: [
           'text-decoration', 'align', 'font-family', 'font-size', 'line-height',

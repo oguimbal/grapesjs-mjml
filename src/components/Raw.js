@@ -32,7 +32,7 @@ export default (editor, {
 
       defaults: { ...defaultModel.prototype.defaults,
         'custom-name': 'Raw',
-        draggable: '[data-type=mj-column]',
+        draggable: '[data-type=mj-column], [data-type=mj-hero-content]',
         droppable: false,
         stylable: [],
       },

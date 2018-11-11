@@ -14,6 +14,8 @@ import loadImage from './Image';
 import loadSocial from './Social';
 import loadDivider from './Divider';
 import loadSpacer from './Spacer';
+import loadHero from './Hero';
+import loadHeroContent from './HeroContent';
 
 export default (editor, opt = {}) => {
   let domc = editor.DomComponents;
@@ -327,4 +329,6 @@ export default (editor, opt = {}) => {
   loadLocation(editor, compOpts);
   loadWrapper(editor, compOpts);
   loadRaw(editor, compOpts);
+  loadHero(editor, compOpts);
+  loadHeroContent(editor, compOpts);
 }

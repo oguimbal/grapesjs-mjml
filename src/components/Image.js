@@ -14,7 +14,7 @@ export default (editor, {
         'custom-name': 'Image',
         resizable: false,
         highlightable: false,
-        draggable: '[data-type=mj-column]',
+        draggable: '[data-type=mj-column], [data-type=mj-hero-content]',
         stylable: [
           'width', 'height',
           'padding', 'padding-top', 'padding-left', 'padding-right', 'padding-bottom',

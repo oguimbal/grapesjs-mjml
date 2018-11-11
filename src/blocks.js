@@ -107,4 +107,11 @@ export default (editor, opt = {}) => {
     attributes: { class: 'fa fa-code' },
     ...allBlocks,
   });
+
+  bm.add('mj-hero', {
+    label: 'Hero',
+    content: '<mj-hero background-url="http://placehold.it/350x250/78c5d6/fff"><mj-hero-content><mj-text>Sample Text</mj-text></mj-hero-content></mj-hero>',
+    attributes: { class: 'fa fa-image' },
+    ...allBlocks,
+  });
 }

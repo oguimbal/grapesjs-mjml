@@ -12,7 +12,7 @@ export default (editor, {
 
       defaults: { ...textModel.prototype.defaults,
         'custom-name': 'Text',
-        draggable: '[data-type=mj-column]',
+        draggable: '[data-type=mj-column], [data-type=mj-hero-content]',
         highlightable: false,
         stylable: [
           'height', 'font-style', 'font-size', 'font-weight', 'font-family', 'color',

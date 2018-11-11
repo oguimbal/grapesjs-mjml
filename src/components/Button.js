@@ -12,7 +12,7 @@ export default (editor, {
 
       defaults: { ...linkModel.prototype.defaults,
         'custom-name': 'Button',
-        draggable: '[data-type=mj-column]',
+        draggable: '[data-type=mj-column], [data-type=mj-hero-content]',
         highlightable: false,
         stylable: ['width', 'height',
           'background-color', 'container-background-color',

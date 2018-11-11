@@ -12,7 +12,7 @@ export default (editor, {
 
       defaults: { ...defaultModel.prototype.defaults,
         'custom-name': 'Divider',
-        draggable: '[data-type=mj-column]',
+        draggable: '[data-type=mj-column], [data-type=mj-hero-content]',
         droppable: false,
         'style-default': {
           'width': '100%',
