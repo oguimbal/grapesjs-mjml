@@ -47,12 +47,15 @@ function renderNode(node, context) {
   const lines = [
     `<${tagName} ${attrs.join(' ')}>`,
   ];
-  if(tagName === 'mj-text' || tagName === 'mj-raw' || tagName === 'mj-button') {
-    lines.push(evalText(node.textContent, context));
-  }
-  else {
-    const children = [];
-    for(let child of node.childNodes) {
+  const children = [];
+  let text = '';
+  for(let child of node.childNodes) {
+    if(child.nodeType === 3) {
+      text += child.nodeValue;
+    }
+    else {
+      children.push(evalText(text, context));
+      text = '';
       const childCodes = toCode(child, context);
       if(childCodes) {
         childCodes.forEach(childCode => {
@@ -60,8 +63,11 @@ function renderNode(node, context) {
         });
       }
     }
-    lines.push(children.join('\n'));
   }
+  if(text) {
+    children.push(evalText(text, context));
+  }
+  lines.push(children.join('\n'));
   lines.push(`</${tagName}>`);
   return lines.join('\n');
 }

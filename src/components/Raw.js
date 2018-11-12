@@ -58,7 +58,7 @@ export default (editor, {
 
     view: defaultView.extend({ ...coreMjmlView,
 
-      tagName: 'tr',
+      tagName: 'div',
 
       events: {
         dblclick: 'enableEditing',
@@ -76,7 +76,7 @@ export default (editor, {
       },
 
       getTemplateFromEl(sandboxEl) {
-        return sandboxEl.querySelector('div > table > tbody').innerHTML;
+        return sandboxEl.querySelector('div').innerHTML;
       },
 
       enableEditing(e) {
