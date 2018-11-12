@@ -83,12 +83,12 @@ export default (editor, opt = {}) => {
         });
       }
       tb.push({
-        attributes: { class: 'fa fa-code' },
+        attributes: { class: 'fa fa-i-cursor' },
         command: 'mjml-set-condition',
         tooltip: 'Set Conditional Code'
       });
       tb.push({
-        attributes: { class: 'fa fa-code' },
+        attributes: { class: 'fa fa-bullseye' },
         command: 'mjml-set-loop',
         tooltip: 'Set Looping Code'
       });

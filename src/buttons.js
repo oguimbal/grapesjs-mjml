@@ -25,19 +25,26 @@ export default (editor, opt = {}) => {
 
   pnm.addButton('options', {
     id: 'mjml-variables',
-    className: 'fa fa-list',
+    className: 'fa fa-ellipsis-v',
     command: 'mjml-set-variables',
     attributes: { title: 'Set Variables' }
   });
 
   pnm.addButton('options', {
     id: 'mjml-user-context',
-    className: 'fa fa-list',
+    className: 'fa fa-exclamation',
     command: 'mjml-set-user-context',
     attributes: { title: 'Set User Context' }
   });
 
   if(!opt.readOnly) {
+    pnm.addButton('options', {
+      id: 'mjml-delete-user-block',
+      className: 'fa fa-ban',
+      command: 'mjml-delete-user-block',
+      attributes: { title: 'Delete User Block' }
+    });
+
     pnm.addButton('options', {
       id: 'mjml-save',
       className: 'fa fa-save',
