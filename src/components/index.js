@@ -92,6 +92,11 @@ export default (editor, opt = {}) => {
         command: 'mjml-set-loop',
         tooltip: 'Set Looping Code'
       });
+      tb.push({
+        attributes: { class: 'fa fa-user' },
+        command: 'mjml-save-user-block',
+        tooltip: 'Save As User Block'
+      });
       if (model.get('removable') && !opt.readOnly) {
         tb.push({
           attributes: { class: 'fa fa-trash-o' },

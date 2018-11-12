@@ -10,6 +10,7 @@ export default (editor, opt = {}) => {
   let setVariablesCommand = require('./command-set-variables');
   let saveCommand = require('./command-save');
   let setUserContextCommand = require('./command-set-user-context');
+  let saveUserBlockCommand = require('./command-save-user-block');
 
   cmd.add('mjml-import', importCommand.default(editor, opt));
   cmd.add(exportName, exportCommand.default(editor, opt));
@@ -20,4 +21,5 @@ export default (editor, opt = {}) => {
   cmd.add('mjml-set-variables', setVariablesCommand.default(editor, opt));
   cmd.add('mjml-save', saveCommand.default(editor, opt));
   cmd.add('mjml-set-user-context', setUserContextCommand.default(editor, opt));
+  cmd.add('mjml-save-user-block', saveUserBlockCommand.default(editor, opt));
 }

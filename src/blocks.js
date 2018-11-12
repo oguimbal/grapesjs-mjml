@@ -10,8 +10,12 @@ export default (editor, opt = {}) => {
   }
 
   const allBlocks = {
-    category: opt.categoryLabel,
-  }
+    category: 'Basic',
+  };
+
+  const userBlocks = {
+    category: 'User',
+  };
 
   bm.add('mj-1-column', {
     label: '1 Column',
@@ -114,4 +118,15 @@ export default (editor, opt = {}) => {
     attributes: { class: 'fa fa-image' },
     ...allBlocks,
   });
+
+  if(opt.userBlocks) {
+    opt.userBlocks.forEach(block => {
+      bm.add(`mj-user-${block.name}`, {
+        label: block.name,
+        content: block.content,
+        attributes: { class: 'fa fa-user' },
+        ...userBlocks,
+      });
+    });
+  }
 }
