@@ -61,6 +61,13 @@ export default (editor, {
         return sandboxEl.querySelector('tr').innerHTML;
       },
 
+      openModal() {
+        if(opt.readOnly) {
+          return;
+        }
+        imageView.prototype.openModal.apply(this, arguments);
+      },
+
       getChildrenSelector() {
         return 'img';
       },

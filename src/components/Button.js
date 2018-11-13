@@ -70,6 +70,13 @@ export default (editor, {
         return 'a,p';
       },
 
+      enableEditing() {
+        if(opt.readOnly) {
+          return;
+        }
+        linkView.prototype.enableEditing.apply(this, arguments);
+      },
+
       /**
        * Prevent content repeating
        */

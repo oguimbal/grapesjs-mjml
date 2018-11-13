@@ -14,6 +14,7 @@ export default (editor, {
   btnImp.className = pfx + 'btn-prim ' + pfx + 'btn-edit';
   btnImp.style.marginTop = '10px';
   btnImp.style.float = 'right';
+  btnImp.disabled = opt.readOnly,
   btnImp.onclick = () => {
     let code = codeViewer.editor.getValue();
     editor.getSelected().set('content', code);
@@ -22,7 +23,7 @@ export default (editor, {
   codeViewer.set({
    codeName: 'htmlmixed',
    theme: opt.codeViewerTheme,
-   readOnly: 0
+   readOnly: opt.readOnly,
   });
 
   dc.addType(type, {

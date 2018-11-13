@@ -78,6 +78,9 @@ export default (editor, {
        * Need to make text selectable.
        */
       enableEditing() {
+        if(opt.readOnly) {
+          return;
+        }
         textView.prototype.enableEditing.apply(this, arguments);
         this.getChildrenContainer().style.pointerEvents = 'all';
       },
