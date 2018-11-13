@@ -96,14 +96,12 @@ export default (editor, opt = {}) => {
     ...allBlocks,
   });
 
-  /**
   bm.add('mj-wrapper', {
     label: 'Wrapper',
     content: `<mj-wrapper></mj-wrapper>`,
     attributes: { class: 'gjs-fonts gjs-f-b1' },
     ...allBlocks,
   });
-  */
 
   bm.add('mj-raw', {
     label: 'Raw',
