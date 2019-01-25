@@ -1,8 +1,8 @@
 {
-  "name": "grapesjs-mjml",
-  "version": "0.0.28",
+  "name": "@oguimbal/grapesjs-mjml",
+  "version": "0.0.29",
   "description": "MJML Componenets integration in GrapesJS",
-  "main": "dist/grapesjs-mjml.min.js",
+  "main": "dist/@oguimbal/grapesjs-mjml.min.js",
   "scripts": {
     "lint": "eslint src",
     "v:patch": "npm version --no-git-tag-version patch",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/artf/grapesjs-mjml.git"
+    "url": "https://github.com/oguimbal/grapesjs-mjml.git"
   },
   "keywords": [
     "grapesjs",

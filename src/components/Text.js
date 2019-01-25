@@ -87,7 +87,7 @@ export default (editor, {
 
       disableEditing() {
         textView.prototype.disableEditing.apply(this, arguments);
-        this.getChildrenContainer().style.pointerEvents = 'none';
+        // this.getChildrenContainer().style.pointerEvents = 'none';
       },
     }),
   });

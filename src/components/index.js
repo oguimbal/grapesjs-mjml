@@ -272,7 +272,7 @@ export default (editor, opt = {}) => {
         var disableNode = function(el) {
           var children = Array.prototype.slice.call(el.children);
           children.forEach(function (el) {
-            el.style['pointer-events'] = 'none';
+            //el.style['pointer-events'] = 'none';
             if (container !== el) {
               disableNode(el);
             }
